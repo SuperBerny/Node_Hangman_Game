@@ -46,16 +46,28 @@ function startGame(){
 
 function checkLetters(letter){
     //check if the letter is anywhere in the word
-    alert(letter);
     var letterInWord = false;
     for(var i = 0; i<numBlanks; i++){
         if (selectedWord[i] == letter) {
             letterInWord = true;
-            alert("Letter Found");
         }
     }
-}
 
+    //check where in the word the letter exists and then populate blanksAndSuccesses arrary.
+        if(letterInWord) {    
+        for(var i = 0; i<numBlanks; i++) {
+            if(selectedWord[i] == letter) {
+                blanksAndSuccesses[i] = letter;
+                console.log(blanksAndSuccesses);
+            }
+        }
+        
+    }
+            else {
+        wrongGuesses.push(letter);
+        numGuesses--;
+        }
+    }
 //Main process
 // ----------------------------------------------
 //Initiates the game on pageload
